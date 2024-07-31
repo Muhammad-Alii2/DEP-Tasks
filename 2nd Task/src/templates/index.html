@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Spam Classifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 80%;
+            max-width: 800px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        textarea {
+            font-size: 1em;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        input[type="submit"] {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .results {
+            margin-top: 20px;
+        }
+        .results h2 {
+            color: #333;
+        }
+        .results p {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        .results strong {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Email Spam Classifier</h1>
+        <form method="post">
+            <label for="email_content">Enter email content:</label>
+            <textarea id="email_content" name="email_content" rows="10" cols="50" placeholder="Type or paste your email content here..."></textarea>
+            <input type="submit" value="Classify">
+        </form>
+        {% if nb_result is not none %}
+            <div class="results">
+                <h2>Results:</h2>
+                <p><strong>Naive Bayes Prediction:</strong> {{ nb_result }}</p>
+                <p><strong>SVM Prediction:</strong> {{ svm_result }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
